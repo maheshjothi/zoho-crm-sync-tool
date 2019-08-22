@@ -3,7 +3,7 @@ Sync the zoho accounts with the local mysql database
 
 If required, please have a look into https://github.com/zoho/zcrm-php-sdk on Readme.md file as a reference for creating the clientID, client secret, grant/refresh token. This code has been followed from some of the steps from the same.  
 
-1.For the kind reference, for generating the grant token, we need to use the scope values like aaaserver.profile.READ,ZohoCRM.users.ALL,ZohoCRM.modules.ALL,ZohoCRM.settings.all in the https://accounts.zoho.com/developerconsole and its valid for a single call only.  
+1. For the kind reference, for generating the grant token, we need to use the scope values like aaaserver.profile.READ,ZohoCRM.users.ALL,ZohoCRM.modules.ALL,ZohoCRM.settings.all in the https://accounts.zoho.com/developerconsole and its valid for a single call only.  
 
 2. As already i have used refresh token for my account details in the code, Just in case if new refresh token required for different account please follow the above step 1 and step 2 For generating the refresh token from grant token, we need to have a back up of grant token that has been generatedalready and using postman we need to hit the URL https://accounts.zoho.com/oauth/v2/token?code={grant_token}&redirect_uri={redirect_uri}&client_id={client_id}&client_secret={client_secret}&grant_type=authorization_code with POST request by sending the params in Body Content. So that we will get json resonse like below  
 {
@@ -33,7 +33,9 @@ CREATE TABLE `oauthtokens` (
 
 3. Run the command "composer update" to get the vendor folder updated
 
-4. Open the command prompt and run the command "php artisan migrate"  
+4. Open the command prompt and run the command "php artisan migrate".
 
-5. As i have created custom artisan command "sync:zoho:accounts", i have used "php artisan make:command sync:zoho:accounts". So that we can able to create any type of custom artisan commands using the same.  
+5. Under the vendor folder go to the file zohocrm\php-sdk\src\oauth\ZohoOAuth.php. Go to the method getPersistenceHandlerInstance() and please comment/remove the lines from 132-134 and make the next "else if" condition as "if" condition.
+
+6. Finally run the command "php artisan sync:zoho:accounts" to sync the data from zoho CRM to local DB, i have used "php artisan make:command sync:zoho:accounts". So that we can able to create any type of custom artisan commands using the same.  
 
