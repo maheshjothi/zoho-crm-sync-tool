@@ -1,6 +1,8 @@
 # zoho-crm-sync-tool
 Sync the zoho accounts with the local mysql database  
 
+General Reference Can Be Followed If Required
+---------------------------------------------
 If required, please have a look into https://github.com/zoho/zcrm-php-sdk on Readme.md file as a reference for creating the clientID, client secret, grant/refresh token. This code has been followed from some of the steps from the same.  
 
 1. For the kind reference, for generating the grant token, we need to use the scope values like aaaserver.profile.READ,ZohoCRM.users.ALL,ZohoCRM.modules.ALL,ZohoCRM.settings.all in the https://accounts.zoho.com/developerconsole and its valid for a single call only.  
@@ -24,12 +26,12 @@ Configuration Set Up In Local Environment
 
 2.Run the query in the zohooauth DB
 
-CREATE TABLE `oauthtokens` (
-  `useridentifier` varchar(100) NOT NULL,
-  `accesstoken` varchar(100) NOT NULL,
-  `refreshtoken` varchar(100) NOT NULL,
-  `expirytime` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+    CREATE TABLE `oauthtokens` (
+      `useridentifier` varchar(100) NOT NULL,
+      `accesstoken` varchar(100) NOT NULL,
+      `refreshtoken` varchar(100) NOT NULL,
+      `expirytime` bigint(20) NOT NULL
+    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 3. Goto to the project root folder and run the command "composer update" to get the vendor folder updated
 
