@@ -20,9 +20,20 @@ If required, please have a look into https://github.com/zoho/zcrm-php-sdk on Rea
 Configuration Set Up In Local Environment
 -----------------------------------------
 
-1.create a DB named zoho-crm-tool and zohooauth  
+1.create a DB named zoho-crm-tool and zohooauth
 
-2.open the command prompt and run the command "php artisan migrate"  
+2.Run the query in the zohooauth DB
 
-3.As i have created custom artisan command "sync:zoho:accounts", i have used "php artisan make:command sync:zoho:accounts". So that we can able to create any type of custom artisan commands using the same.  
+CREATE TABLE `oauthtokens` (
+  `useridentifier` varchar(100) NOT NULL,
+  `accesstoken` varchar(100) NOT NULL,
+  `refreshtoken` varchar(100) NOT NULL,
+  `expirytime` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+3. Run the command "composer update" to get the vendor folder updated
+
+4. Open the command prompt and run the command "php artisan migrate"  
+
+5. As i have created custom artisan command "sync:zoho:accounts", i have used "php artisan make:command sync:zoho:accounts". So that we can able to create any type of custom artisan commands using the same.  
 
