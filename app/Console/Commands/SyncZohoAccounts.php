@@ -76,7 +76,6 @@ class SyncZohoAccounts extends Command
 
     // duplicate check of the records before putting entry into table
     public function recordsInsertOrUpdate($entityId, $phoneNumber, $website, $accountName, $description, $industry, $ownerName) {
-        DB::beginTransaction();
         try {
             DB::table('accounts')->updateOrInsert(
                 ['entity_id' => $entityId],
@@ -89,7 +88,6 @@ class SyncZohoAccounts extends Command
                 ]
             );
         } catch(QueryException $e) {
-            DB::rollback();
             echo $e->getMessage();
             exit;
         }
