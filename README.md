@@ -37,7 +37,7 @@ Configuration Set Up In Local Environment
 
 4. Open the command prompt and run the command "php artisan migrate".
 
-5. Under the vendor folder go to the file zohocrm\php-sdk\src\oauth\ZohoOAuth.php. Go to the method getPersistenceHandlerInstance() and please comment/remove the lines from 132-134 and make the next "else if" condition as "if" condition.
+5. Under the "vendor" folder under project root folder go to the file zohocrm\php-sdk\src\oauth\ZohoOAuth.php. Go to the method getPersistenceHandlerInstance() and please comment/remove the lines from 132-134 and make the next "else if" condition as "if" condition.
 
 6. Finally run the command "php artisan sync:zoho:accounts" to sync the data from zoho CRM to local DB, i have used "php artisan make:command sync:zoho:accounts". So that we can able to create any type of custom artisan commands using the same.  
 
