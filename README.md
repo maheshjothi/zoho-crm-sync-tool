@@ -31,7 +31,7 @@ CREATE TABLE `oauthtokens` (
   `expirytime` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-3. Run the command "composer update" to get the vendor folder updated
+3. Goto to the project root folder and run the command "composer update" to get the vendor folder updated
 
 4. Open the command prompt and run the command "php artisan migrate".
 
